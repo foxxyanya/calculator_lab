@@ -1,0 +1,78 @@
+<Interface>:
+    anchor_x: 'center'
+    anchor_y: 'top'
+
+    canvas:
+        Rectangle:
+            source: 'calc_lib/background.png'
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            Label:
+                text:'Парфенюк Анна Ильинична, 4 курс, 4 группа, 2023 год.'
+                font_size:20
+        BoxLayout: 
+            orientation: 'horizontal'
+            padding: 20
+
+            BoxLayout:
+                TextInput:
+                    id: operand_1
+                    orientation: 'vertical'
+                    hint_text: 'Enter operand 1'
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: "+"
+                        font_size:20 
+                    CheckBox:
+                        group: "operators"
+                        active: True
+                        on_active: root._set_operator(self, '+', 0)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 0.5
+                    Label:
+                        text: "-"
+                        font_size:20
+                    CheckBox:
+                        group: "operators"
+                        on_active: root._set_operator(self, '-', 0)
+
+            BoxLayout:
+                TextInput:
+                    id: operand_2
+                    orientation: 'vertical'
+                    hint_text: 'Enter operand 2'
+
+            BoxLayout:
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                Label:
+                    text: "="
+                    font_size:20
+
+            BoxLayout:
+                TextInput:
+                    id: result_field
+                    hint_text: "Result'll be here..."
+                    font_size:14
+
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.5, 0.5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                text:'Calculate'
+                font_size:15
+                on_press:root.calculate()
