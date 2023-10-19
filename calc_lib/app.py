@@ -29,7 +29,7 @@ class Interface(AnchorLayout):
 
             result = self._perform_operation(operand_1, operand_2, operator_1)
             
-            self.ids['result_field'].text = str(result.value)
+            self.ids['result_field'].text = str(result)
         except Exception as e:
             self.ids['result_field'].text = f'Failed calculating with following error: {e}'
 

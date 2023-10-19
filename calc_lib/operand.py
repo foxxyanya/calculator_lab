@@ -36,7 +36,7 @@ class Operand:
         return format(self.value, __format_spec)
     
     def __str__(self):
-        return f"{self.value:,.6f}".replace(",", " ")
+        return f"{self.value:,.6f}".replace(",", " ").rstrip('0').rstrip('.') #rstrips to avoiding trailing zeros
     
     @staticmethod
     def validate_operator_str(operand_str: str):

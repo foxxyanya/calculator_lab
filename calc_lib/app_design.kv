@@ -48,6 +48,26 @@
                         group: "operators"
                         on_active: root._set_operator(self, '-', 0)
 
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 0.5
+                    Label:
+                        text: "*"
+                        font_size:20
+                    CheckBox:
+                        group: "operators"
+                        on_active: root._set_operator(self, '*', 0)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 0.5
+                    Label:
+                        text: "/"
+                        font_size:20
+                    CheckBox:
+                        group: "operators"
+                        on_active: root._set_operator(self, '/', 0)
+
             BoxLayout:
                 TextInput:
                     id: operand_2
