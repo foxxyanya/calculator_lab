@@ -90,7 +90,7 @@ class Operand:
             op_type=op_type
         )
     
-def round_operand(operand: Operand, type: str) -> Operand:
+def round_to_int(operand: Operand, type: str, *args) -> Operand:
     if operand.op_type == float:
         if type == 'math':
             return Operand(
@@ -107,5 +107,5 @@ def round_operand(operand: Operand, type: str) -> Operand:
                 value=math.floor(operand.value),
                 op_type=operand.op_type
             )
-    else:
-        return operand
+    
+    return operand
