@@ -21,6 +21,7 @@ class Interface(AnchorLayout):
         }
         self._round_strategy = 'math'
         self.operations_presicion = 10
+        self.current_result = None
 
     def calculate(self):
         try:
@@ -43,22 +44,27 @@ class Interface(AnchorLayout):
                 tmp_result = self._perform_operation(bracket_result, operand_4, operator_3, self.operations_presicion)
                 result = self._perform_operation(operand_1, tmp_result, operator_1, self.operations_presicion)
 
+            self.current_result = result
+            print(self.current_result)
+
             if self._round_strategy:
                 result = round_to_int(result, self._round_strategy)
             
-            self.ids['result_field'].text = str(result.value)
+            self.ids['result_field'].text = str(result)
         except Exception as e:
             self.ids['result_field'].text = f'Failed calculating with following error: {e}'
 
-    def _perform_operation(self, lhs: Operand, rhs: Operand, operator: str, precision: Optional[float]) -> Operand:
+    def _perform_operation(self, lhs: Operand, rhs: Operand, operator: str, precision: Optional[float]=6) -> Operand:
         if operator:
             result: Operand = self._operator_handlers[operator](lhs, rhs)
             if precision:
-                result.value = round(result.value, precision)
+                result = Operand(
+                    value=round(result.value, precision)
+                )
         else:
             raise Exception("Operator isn't setted")
     
-        if abs(result.value) > 1e12:
+        if abs(result.value) > 1e13:
             raise Exception('Result overflow')
         
         return result
@@ -68,7 +74,10 @@ class Interface(AnchorLayout):
 
     def _set_round_strategy(self, instance, round_strategy: str):
         self._round_strategy = round_strategy
-   
+
+        if self.current_result:
+            self.ids['result_field'].text = str(round_to_int(self.current_result, self._round_strategy))
+
 
 class CalculatorApp(App):
     def build(self):
