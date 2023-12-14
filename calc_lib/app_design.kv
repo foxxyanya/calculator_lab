@@ -22,7 +22,7 @@
                 TextInput:
                     id: operand_1
                     orientation: 'vertical'
-                    text: '0'
+                    hint_text: 'Enter operand 1'
 
             BoxLayout:
                 orientation: 'vertical'
@@ -69,125 +69,10 @@
                         on_active: root._set_operator(self, '/', 0)
 
             BoxLayout:
-                size_hint: 0.5, 0.5
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                Label:
-                    text: "("
-                    font_size:20
-
-            BoxLayout:
                 TextInput:
                     id: operand_2
                     orientation: 'vertical'
-                    text: '0'
-
-
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint: 0.5, 0.5
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                BoxLayout:
-                    orientation: 'horizontal'
-                    Label:
-                        text: "+"
-                        font_size:20 
-                    CheckBox:
-                        group: "operators2"
-                        active: True
-                        on_active: root._set_operator(self, '+', 1)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "-"
-                        font_size:20
-                    CheckBox:
-                        group: "operators2"
-                        on_active: root._set_operator(self, '-', 1)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "*"
-                        font_size:20
-                    CheckBox:
-                        group: "operators2"
-                        on_active: root._set_operator(self, '*', 1)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "/"
-                        font_size:20
-                    CheckBox:
-                        group: "operators2"
-                        on_active: root._set_operator(self, '/', 1)            
-
-            BoxLayout:
-                TextInput:
-                    id: operand_3
-                    orientation: 'vertical'
-                    text: '0'     
-
-            BoxLayout:
-                size_hint: 0.5, 0.5
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                Label:
-                    text: ")"
-                    font_size:20
-
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint: 0.5, 0.5
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                BoxLayout:
-                    orientation: 'horizontal'
-                    Label:
-                        text: "+"
-                        font_size:20 
-                    CheckBox:
-                        group: "operators3"
-                        active: True
-                        on_active: root._set_operator(self, '+', 2)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "-"
-                        font_size:20
-                    CheckBox:
-                        group: "operators3"
-                        on_active: root._set_operator(self, '-', 2)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "*"
-                        font_size:20
-                    CheckBox:
-                        group: "operators3"
-                        on_active: root._set_operator(self, '*', 2)
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    spacing: 0.5
-                    Label:
-                        text: "/"
-                        font_size:20
-                    CheckBox:
-                        group: "operators3"
-                        on_active: root._set_operator(self, '/', 2)
-
-            BoxLayout:
-                TextInput:
-                    id: operand_4
-                    orientation: 'vertical'
-                    text: '0' 
+                    hint_text: 'Enter operand 2'
 
             BoxLayout:
                 size_hint: 0.5, 0.5
@@ -201,55 +86,6 @@
                     id: result_field
                     hint_text: "Result'll be here..."
                     font_size:14
-
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint: 0.5, 0.5
-            pos_hint: {'center_x': .5, 'center_y': .5}
-            Label:
-                text: "Round strategy"
-                font_size:15
-
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: 0.5
-                Label:
-                    text: "Math rounding"
-                    font_size:15
-                CheckBox:
-                    group: "rounding"
-                    active: True
-                    on_active: root._set_round_strategy(self, 'math')
-
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: 0.5
-                Label:
-                    text: "Banker's rounding"
-                    font_size:15
-                CheckBox:
-                    group: "rounding"
-                    on_active: root._set_round_strategy(self, 'bank')
-
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: 0.5
-                Label:
-                    text: "Floor rounding"
-                    font_size:15
-                CheckBox:
-                    group: "rounding"
-                    on_active: root._set_round_strategy(self, 'floor')
-
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: 0.5
-                Label:
-                    text: "Without rounding"
-                    font_size:15
-                CheckBox:
-                    group: "rounding"
-                    on_active: root._set_round_strategy(self, '')
 
         
         BoxLayout:
