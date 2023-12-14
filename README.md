@@ -13,6 +13,7 @@ Python version - 3.8
 2. Install requirements:
 
    ```
+   pip install --upgrade pip
    pip install -r requirements.txt
    ```
 3. Run app:
